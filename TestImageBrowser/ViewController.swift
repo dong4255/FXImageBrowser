@@ -12,7 +12,7 @@ import Kingfisher
 
 class ViewController: UIViewController {
     
-    private let flowLayout = CHTCollectionViewWaterfallLayout()
+    private let flowLayout = UICollectionViewFlowLayout()
     private var collectionView : UICollectionView!
     private let cellId = "smallImageCell"
     private var dataSource = [(imageUrl:URL,imageSize:CGSize?)]()
@@ -23,10 +23,10 @@ class ViewController: UIViewController {
         
         
         flowLayout.minimumInteritemSpacing = 6
-        flowLayout.minimumColumnSpacing = 6
+        flowLayout.minimumLineSpacing = 6
         flowLayout.sectionInset = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-        flowLayout.columnCount = 3
-//        flowLayout.scrollDirection = .vertical
+//        flowLayout.columnCount = 3
+        flowLayout.scrollDirection = .vertical
         
         let rect = CGRect(x: 0, y: 20, width: view.bounds.size.width, height: view.bounds.size.height - 20)
         collectionView = UICollectionView(frame: rect, collectionViewLayout: flowLayout)
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource , CHTCollectionViewDelegateWaterfallLayout {
+extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

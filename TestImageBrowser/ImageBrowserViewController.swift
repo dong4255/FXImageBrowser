@@ -93,7 +93,9 @@ class ImageBrowserViewController: UIViewController {
 
         backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionBackgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.autoresizingMask = [.flexibleWidth,. flexibleHeight]
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        
     }
     
     

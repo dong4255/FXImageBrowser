@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D85B5D3C03C4200C15606BE /* Pods_TestImageBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3F67DE10D902FD8C555748 /* Pods_TestImageBrowser.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F53BEBC6222917CC00D7A11F /* ImageBrowserTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BEBC5222917CC00D7A11F /* ImageBrowserTransition.swift */; };
+		F555F3FA222FC9910023AF94 /* WaterFallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F555F3F9222FC9910023AF94 /* WaterFallLayout.swift */; };
 		F56E871122262AEE00790527 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E871022262AEE00790527 /* AppDelegate.swift */; };
 		F56E871322262AEE00790527 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56E871222262AEE00790527 /* ViewController.swift */; };
 		F56E871622262AEF00790527 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56E871422262AEF00790527 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		1B3F67DE10D902FD8C555748 /* Pods_TestImageBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestImageBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE31A40B2A55E43EFA1E044D /* Pods-TestImageBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestImageBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestImageBrowser/Pods-TestImageBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		F53BEBC5222917CC00D7A11F /* ImageBrowserTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBrowserTransition.swift; sourceTree = "<group>"; };
+		F555F3F9222FC9910023AF94 /* WaterFallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallLayout.swift; sourceTree = "<group>"; };
 		F56E870D22262AEE00790527 /* TestImageBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestImageBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56E871022262AEE00790527 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56E871222262AEE00790527 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				F56E871022262AEE00790527 /* AppDelegate.swift */,
 				F56E871222262AEE00790527 /* ViewController.swift */,
+				F555F3F9222FC9910023AF94 /* WaterFallLayout.swift */,
 				F5DFF53A222E658500EA4D0D /* SmallImageCell.swift */,
 				F56E873E222633A900790527 /* ImageBrowserViewController.swift */,
 				F56E87402226370E00790527 /* ImageCollectionViewCell.swift */,
@@ -343,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F555F3FA222FC9910023AF94 /* WaterFallLayout.swift in Sources */,
 				F56E871322262AEE00790527 /* ViewController.swift in Sources */,
 				F53BEBC6222917CC00D7A11F /* ImageBrowserTransition.swift in Sources */,
 				F56E873F222633A900790527 /* ImageBrowserViewController.swift in Sources */,

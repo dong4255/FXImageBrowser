@@ -96,12 +96,12 @@ class ImageCollectionViewCell: UICollectionViewCell {
         
         imageView.image = image
         
-        let width = bounds.size.width
-        let height = bounds.size.width * image.size.height / image.size.width
+        let width = scrollView.bounds.width
+        let height = scrollView.bounds.width * image.size.height / image.size.width
         
         imageView.frame.size = CGSize(width: width, height: height)
-        scrollView.contentSize = CGSize(width: width, height: max(height, bounds.size.height))
-        if height < bounds.size.height {
+        scrollView.contentSize = CGSize(width: width, height: max(height, scrollView.bounds.height))
+        if height < scrollView.bounds.height {
             imageView.center = scrollView.center
         }else {
             imageView.frame.origin = .zero
@@ -117,7 +117,9 @@ class ImageCollectionViewCell: UICollectionViewCell {
         guard let collectionView = self.superview as? UICollectionView ,
             let backgroundView = collectionView.superview?.superview?.subviews.first else { return }
         let offset = pan.translation(in: pan.view)
-        
+        if abs(offset.y) <= 5 {
+            return
+        }
         switch pan.state {
         case .began :
             self.delegate?.browserWillBeginDismiss?()
@@ -134,8 +136,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
                 dismissBrowser()
             }else {
                 collectionView.isScrollEnabled = true
-                collectionView.superview?.transform = .identity
-                backgroundView.alpha = 1
+                UIView.animate(withDuration: 0.2) {
+                    collectionView.superview?.transform = .identity
+                    backgroundView.alpha = 1
+                }
                 self.delegate?.browserDidCancelDismiss?()
                 UIApplication.shared.setStatusBarHidden(true, with: .slide)
             }
