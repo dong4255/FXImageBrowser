@@ -1,0 +1,22 @@
+PODS:
+  - CHTCollectionViewWaterfallLayout (0.9.7):
+    - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.7)
+  - CHTCollectionViewWaterfallLayout/ObjC (0.9.7)
+  - Kingfisher (4.10.1)
+
+DEPENDENCIES:
+  - CHTCollectionViewWaterfallLayout
+  - Kingfisher
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CHTCollectionViewWaterfallLayout
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+
+PODFILE CHECKSUM: ad8a398cffc331599828c8baa8b7f34e91f5cc84
+
+COCOAPODS: 1.8.4

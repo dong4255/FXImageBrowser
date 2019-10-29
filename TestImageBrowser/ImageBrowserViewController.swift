@@ -43,6 +43,8 @@ class ImageBrowserViewController: UIViewController {
         self.transitionAnimation = ImageBrowserTransition(smallImageCell: cell)
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .custom
+        self.modalPresentationCapturesStatusBarAppearance = true
         self.transitioningDelegate = self
     }
     

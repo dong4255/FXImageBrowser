@@ -95,7 +95,7 @@ class ImageBrowserTransition: NSObject , UIViewControllerAnimatedTransitioning {
     private func dismissAnimation(using transitionContext: UIViewControllerContextTransitioning) {
         
         guard let fromVC = transitionContext.viewController(forKey: .from) as? ImageBrowserViewController ,
-            let toVC = transitionContext.viewController(forKey: .to) as? ViewController ,
+            let toVC = transitionContext.viewController(forKey: .to) ,
             let dismissImageView = dismissImageView else {
                 return
         }
