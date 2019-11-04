@@ -8,4 +8,5 @@ inhibit_all_warnings!
 target 'TestImageBrowser' do
     pod 'CHTCollectionViewWaterfallLayout'
     pod 'Kingfisher'
+    pod 'SKPhotoBrowser'
 end

@@ -9,6 +9,7 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 import Kingfisher
+import SKPhotoBrowser
 
 class ViewController: UIViewController {
     
@@ -105,11 +106,15 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let cell = collectionView.cellForItem(at: indexPath) as! SmallImageCell
-        let imageBrowser = ImageBrowserViewController(selectedIndex: indexPath.row, cell: cell, collectionView: collectionView)
-        imageBrowser.delegate = self
-        imageBrowser.showImageBrowser(with: self)
+//        let cell = collectionView.cellForItem(at: indexPath) as! SmallImageCell
+//        let imageBrowser = ImageBrowserViewController(selectedIndex: indexPath.row, cell: cell, collectionView: collectionView)
+//        imageBrowser.delegate = self
+//        imageBrowser.showImageBrowser(with: self)
         
+        let photos = dataSource.map{ SKKFPhoto(url: $0.imageUrl.absoluteString) }
+        let imageBrowser = SKPhotoBrowser(photos: photos, initialPageIndex: indexPath.item)
+        imageBrowser.delegate = self
+        self.present(imageBrowser, animated: true, completion: nil)
     }
     
 }
@@ -126,5 +131,26 @@ extension ViewController : ImageBrowserViewControllerDelegate {
     }
     
     
+}
+
+extension ViewController: SKPhotoBrowserDelegate {
+    
+    func didShowPhotoAtIndex(_ browser: SKPhotoBrowser, index: Int) {
+        collectionView.visibleCells.forEach({$0.isHidden = false})
+        collectionView.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = true
+    }
+    
+    func willDismissAtPageIndex(_ index: Int) {
+        collectionView.visibleCells.forEach({$0.isHidden = false})
+        collectionView.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = true
+    }
+    
+    func didDismissAtPageIndex(_ index: Int) {
+        collectionView.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = false
+    }
+    
+    func viewForPhoto(_ browser: SKPhotoBrowser, index: Int) -> UIView? {
+        return collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+    }
 }
 
