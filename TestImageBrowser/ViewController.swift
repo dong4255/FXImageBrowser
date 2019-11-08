@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     private var collectionView : UICollectionView!
     private let cellId = "smallImageCell"
     private var dataSource = [(imageUrl:URL,imageSize:CGSize?)]()
+    
+    private var page = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,23 +46,23 @@ class ViewController: UIViewController {
     }
 
     private func requestImageData() {
-        guard let urlString = NSString(string: "http://gank.io/api/data/福利/78/1").addingPercentEscapes(using: String.Encoding.utf8.rawValue),
+        guard let urlString = NSString(string: "http://gank.io/api/data/福利/50/\(page)").addingPercentEscapes(using: String.Encoding.utf8.rawValue),
             let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, aError) in
-            if let valueData = data,
-                let value = try? JSONSerialization.jsonObject(with: valueData, options: []) ,
-                let json = value as? [String:Any],
-                let results = json["results"] as? [[String:Any]] {
-                
-                for item in results {
-                    if let imageUrlString = item["url"] as? String ,
-                        let imageUrl = URL(string: imageUrlString) {
-                        self.dataSource.append((imageUrl,nil))
+            DispatchQueue.main.async {
+                if let valueData = data,
+                    let value = try? JSONSerialization.jsonObject(with: valueData, options: []) ,
+                    let json = value as? [String:Any],
+                    let results = json["results"] as? [[String:Any]] {
+                    
+                    for item in results {
+                        if let imageUrlString = item["url"] as? String ,
+                            let imageUrl = URL(string: imageUrlString) {
+                            self.dataSource.append((imageUrl,nil))
+                        }
                     }
-                }
-                
-                DispatchQueue.main.async {
+                    
                     self.collectionView.reloadData()
                 }
             }
@@ -115,6 +117,13 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource 
         let imageBrowser = SKPhotoBrowser(photos: photos, initialPageIndex: indexPath.item)
         imageBrowser.delegate = self
         self.present(imageBrowser, animated: true, completion: nil)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentSize.height - scrollView.contentOffset.y - scrollView.bounds.height <= 150 , dataSource.count > 0 {
+            page += 1
+            requestImageData()
+        }
     }
     
 }
